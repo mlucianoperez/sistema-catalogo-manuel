@@ -12,11 +12,16 @@ def buscar_producto(catalogo, nombre_buscado):
     return None
 
 
+def agregar_producto(catalogo, nombre, precio, disponible):
+    catalogo.append({"nombre": nombre, "precio": precio, "disponibilidad": disponible})
+
+
 def main():
     while True:
         print("\n--- Menú ---")
         print("1. Ver catálogo completo")
         print("2. Buscar un producto")
+        print("3. Agregar un producto nuevo")
         print("0. Salir")
         
         opcion = input("\nElige una opción: ")
@@ -33,6 +38,15 @@ def main():
                 print(f"\nProducto encontrado: {resultado['nombre']}: ${resultado['precio']}")
             else:
                 print("\nProducto no encontrado")
+        
+        elif opcion == "3":
+            nombre = input("\nIngresa el nombre del producto: ")
+            try:
+                precio = float(input("Ingresa el precio: "))
+                agregar_producto(catalogo_negocio, nombre, precio, True)
+                print(f"\n✓ Producto '{nombre}' agregado correctamente al catálogo")
+            except ValueError:
+                print("\nError: El precio debe ser un número válido")
         
         elif opcion == "0":
             print("¡Hasta luego!")
