@@ -9,11 +9,17 @@ catalogo_negocio = [
 def main():
     while True:
         print("\n--- Menú ---")
+        print("1. Ver catálogo completo")
         print("0. Salir")
         
         opcion = input("\nElige una opción: ")
         
-        if opcion == "0":
+        if opcion == "1":
+            print("\n--- Catálogo ---")
+            for producto in catalogo_negocio:
+                print(f"{producto['nombre']}: ${producto['precio']}")
+        
+        elif opcion == "0":
             print("¡Hasta luego!")
             break
 
